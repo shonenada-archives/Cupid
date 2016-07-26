@@ -8,6 +8,17 @@
             [compojure.handler :as handler]
             [cupid.config :as config]))
 
+(defn wrap-cookie
+  [handler]
+  (wrap-session handler {:cookie-attrs {:secure true}
+                         :cookie-name "cupid-cookie"
+                         :store (cookie-store)}))
+
+(def app (handler/site (-> app-routes
+                           wrap-cookie
+                           wrap-json-response
+                           wrap-json-params)))
+
 (defn -main [& args]
   (log/info (str "Server is running at " config/web-host ":" config/web-port))
-  (println "Hello, World!"))
+  (run-jetty app {:port config/web-port}))
