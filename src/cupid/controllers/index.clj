@@ -3,4 +3,4 @@
   (:require [selmer.parser :refer [render-file]]))
 
 (defn index [request]
-  (response (render-file "templates/index.html")))
+  (response (render-file "templates/index.html" {})))
