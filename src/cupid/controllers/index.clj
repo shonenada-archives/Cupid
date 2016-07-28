@@ -1,6 +1,7 @@
 (ns cupid.controllers.index
-  (:use [cupid.utils.resp])
+  (:use [ring.util.response])
   (:require [selmer.parser :refer [render-file]]))
 
 (defn index [request]
-  (response (render-file "templates/index.html" {})))
+  (let [resp-text (render-file "templates/index.html" {})]
+    (-> (response resp-text))))
