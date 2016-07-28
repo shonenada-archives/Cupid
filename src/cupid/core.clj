@@ -1,6 +1,7 @@
 (ns cupid.core
   (:use [ring.adapter.jetty]
         [ring.middleware.json :refer [wrap-json-params wrap-json-response]]
+        [ring.middleware.params :refer [wrap-params]]
         [ring.middleware.session :only [wrap-session]]
         [ring.middleware.session.cookie :only [cookie-store]]
         [cupid.routes])
@@ -16,6 +17,7 @@
 
 (def app (handler/site (-> app-routes
                            wrap-cookie
+                           wrap-params
                            wrap-json-response
                            wrap-json-params)))
 
