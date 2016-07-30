@@ -7,6 +7,44 @@
             [cupid.models.account :as account-model]
             [cupid.messages :as messages]))
 
+(defn signup-page [request]
+  (response (render-file "templates/account/signup.html" {})))
+
+(defn signup [request]
+  (let [params (:params request)
+        username (:username params)
+        password (:password params)
+        fullname (:fullname params)
+        email (:email params)
+        mobile (:mobile params)]
+    (if (or (empty? username)
+            (empty? password)
+            (empty? fullname)
+            (empty? email)
+            (empty? mobile))
+      (response {:success false
+                 :message messages/empty-fields})
+      (let [account-by-username (account-model/get-by-username username)
+            account-by-mobile (account-model/get-by-mobile mobile)
+            account-by-email (account-model/get-by-email email)]
+        (if (not (nil? account-by-username))
+          (response {:success false
+                     :message messages/username-exist})
+          (if (not (nil? account-by-mobile))
+            (response {:success false
+                       :message messages/mobile-exist})
+            (if (not (nil? account-by-email))
+              (response {:success false
+                         :message messages/email-exist})
+              (let [account {:username username
+                             :password (cipher/hash-str password)
+                             :fullname fullname
+                             :email email
+                             :mobile mobile}
+                    created-account (account-model/create account)]
+                (response {:success true})))))
+        ))))
+
 (defn signin-page [request]
   (response (render-file "templates/account/signin.html" {})))
 
