@@ -45,7 +45,7 @@
 (defn set-token [account token]
   (update accounts
           (set-fields {:token token})
-          (where {:id {:id account}})))
+          (where {:id (:id account)})))
 
 (defn check-token [account token]
   (let [account-token {:token account}]
