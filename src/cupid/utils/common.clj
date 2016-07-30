@@ -1,4 +1,5 @@
-(ns cupid.utils.common)
+(ns cupid.utils.common
+  (:require [clojure.data.generators :as dg :only [uuid]]))
 
 (defn ->int [s]
   (try
@@ -9,3 +10,6 @@
       :else nil)
     (catch Exception e
       nil)))
+
+(defn uuid []
+  (dg/uuid))
