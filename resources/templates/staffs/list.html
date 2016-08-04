@@ -1,5 +1,7 @@
-test
+{% extends 'base.html' %}
+{% block main %}
 {% for each in staffs %}
 {{ each.id }}
 {{ each.fullname }}
 {% endfor %}
+{% endblock %}

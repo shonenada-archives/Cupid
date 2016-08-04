@@ -8,7 +8,7 @@
             [cupid.messages :as messages]))
 
 (defn signup-page [request]
-  (response (render-file "templates/account/signup.html" {})))
+  (response (render-file "account/signup.html" {})))
 
 (defn signup [request]
   (let [params (:params request)
@@ -46,7 +46,7 @@
         ))))
 
 (defn signin-page [request]
-  (response (render-file "templates/account/signin.html" {})))
+  (response (render-file "account/signin.html" {})))
 
 (defn signin [request]
   (let [params (:params request)

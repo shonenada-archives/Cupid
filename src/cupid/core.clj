@@ -5,9 +5,14 @@
         [ring.middleware.session :only [wrap-session]]
         [ring.middleware.session.cookie :only [cookie-store]]
         [cupid.routes])
-  (:require [clojure.tools.logging :as log]
+  (:require [clojure.java.io :refer [resource]]
+            [clojure.tools.logging :as log]
             [compojure.handler :as handler]
+            [selmer.parser :refer [set-resource-path! cache-off!]]
             [cupid.config :as config]))
+
+(selmer.parser/cache-off!)
+(selmer.parser/set-resource-path! (resource "templates"))
 
 (defn wrap-cookie
   [handler]

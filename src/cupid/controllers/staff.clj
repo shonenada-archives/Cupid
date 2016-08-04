@@ -8,6 +8,5 @@
   (let [params (:params request)
         start (:start params)
         size (:size params)
-        staffs (staff-model/get-list start size)
-        _ (logging/debug staffs)]
-    (response (render-file "templates/staffs/list.html" {:staffs staffs}))))
+        staffs (staff-model/get-list start size)]
+    (response (render-file "staffs/list.html" {:staffs staffs}))))
