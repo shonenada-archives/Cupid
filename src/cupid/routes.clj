@@ -18,5 +18,6 @@
   (POST "/account/signin" [request] account-controller/signin)
 
   (GET "/staffs" [request] staff-controller/staffs)
+  (POST "/staffs" [request] staff-controller/create-staff)
 
   (route/not-found (page-not-found)))

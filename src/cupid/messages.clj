@@ -5,3 +5,4 @@
 (defonce ^:const username-exist "Username exists")
 (defonce ^:const mobile-exist "Mobile exists")
 (defonce ^:const email-exist "Email exists")
+(defonce ^:const staff-no-exists "Staff no exists")
