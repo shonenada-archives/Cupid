@@ -20,4 +20,5 @@
   (GET "/staffs" [request] staff-controller/staffs)
   (POST "/staffs" [request] staff-controller/create-staff)
 
+  (route/resources "/")
   (route/not-found (page-not-found)))
