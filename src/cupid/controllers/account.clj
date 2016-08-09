@@ -1,6 +1,7 @@
 (ns cupid.controllers.account
   (:use [cupid.utils.resp])
   (:require [clojure.data.json :as json]
+            [ring.util.response :refer [redirect]]
             [selmer.parser :refer [render-file]]
             [cupid.utils.cipher :as cipher]
             [cupid.utils.cookies :as cookies]
@@ -67,3 +68,9 @@
                      :message messages/signin-fail}))
         (response {:success false
                    :message messages/signin-fail})))))
+
+(defn signout [request]
+  (let [resp (redirect "/")]
+    (-> resp
+        (cookies/delete-cookie request "token")
+        (cookies/delete-cookie request "username"))))
