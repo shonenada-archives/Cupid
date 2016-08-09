@@ -8,15 +8,37 @@
     {% block headhtml %}{% endblock %}
   </head>
   <body>
-    <div class="main">
-    {% block main %}
+    <div class="container">
+    {% block container %}
       <div class="header">
         <h1>Cupid</h1>
         <div class="pull-right nav">
-          <span class="current-user">{{ username }}</div>
-          <a href="/accounts/signout">Sign Out</a>
+          <span class="current-user">{{ username }}</span>
+          <a href="/account/signout">Sign Out</a>
+        </div>
       </div>
+
+      <div class="main">
+        {% block main %}
+        <div class="pull-left menu">
+          <ul class="nav">
+            <li><a href="#">Index</a></li>
+          </ul>
+        </div>
+
+        <div class="content">
+          <h2 class="title">{% block title %}Index{% endblock %}</h2>
+          {% block content %}{% endblock %}
+        </div>
+        {% endblock %}
+      </div>
+
+      <div class="footer">
+        Cupid &copy; 2016
+      </div>
+
     {% endblock %}
     </div>
+    {% block htmlfoot %}{% endblock %} 
   </body>
 </html>
