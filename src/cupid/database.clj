@@ -22,15 +22,16 @@
   (database cupid-db)
   (table :staff)
   (pk :id)
-  (entity-fields :staff-no
+  (entity-fields :id
+                 :staff_no
                  :fullname
                  :gender
                  :email
-                 :id-card
-                 :contact
-                 :employed-time
-                 :job-name
-                 :resume-url
+                 :mobile
+                 :id_card
+                 :employed_time
+                 :job_name
+                 :resume_url
                  :status))
 
 (defentity roles
@@ -43,9 +44,9 @@
   (database cupid-db)
   (table :interview)
   (pk :id)
-  (entity-fields :staff-id
+  (entity-fields :staff_id
                  :interviewer_id
                  :title
                  :remark
                  :result
-                 :interview-time))
+                 :interview_time))

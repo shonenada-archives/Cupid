@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  color: #7e7e7e;
+  font-size: 14px;
+  background: #f7f7f7;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.hide {
+  display: none;
+}
+

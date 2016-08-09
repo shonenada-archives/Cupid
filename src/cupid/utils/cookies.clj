@@ -38,5 +38,5 @@
   (let [cookie-entry (gen-cookie value)]
     (**add-cookie resp req key-name cookie-entry)))
 
-(defn delete-cookie [resp req key-name value]
+(defn delete-cookie [resp req key-name]
   (**add-cookie resp req key-name (expired-cookie)))

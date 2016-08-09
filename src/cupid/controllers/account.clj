@@ -1,6 +1,7 @@
 (ns cupid.controllers.account
   (:use [cupid.utils.resp])
   (:require [clojure.data.json :as json]
+            [ring.util.response :refer [redirect]]
             [selmer.parser :refer [render-file]]
             [cupid.utils.cipher :as cipher]
             [cupid.utils.cookies :as cookies]
@@ -8,7 +9,7 @@
             [cupid.messages :as messages]))
 
 (defn signup-page [request]
-  (response (render-file "templates/account/signup.html" {})))
+  (response (render-file "account/signup.html" {})))
 
 (defn signup [request]
   (let [params (:params request)
@@ -46,7 +47,7 @@
         ))))
 
 (defn signin-page [request]
-  (response (render-file "templates/account/signin.html" {})))
+  (response (render-file "account/signin.html" {})))
 
 (defn signin [request]
   (let [params (:params request)
@@ -67,3 +68,9 @@
                      :message messages/signin-fail}))
         (response {:success false
                    :message messages/signin-fail})))))
+
+(defn signout [request]
+  (let [resp (redirect "/")]
+    (-> resp
+        (cookies/delete-cookie request "token")
+        (cookies/delete-cookie request "username"))))
