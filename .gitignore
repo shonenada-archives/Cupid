@@ -11,4 +11,6 @@ pom.xml.asc
 .env
 *.swp
 
+node_modules/
+
 resources/public/static/components/
