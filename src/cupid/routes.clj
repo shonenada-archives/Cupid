@@ -21,6 +21,7 @@
 
   (GET "/staffs" [request] staff-controller/staffs)
   (POST "/staffs" [request] staff-controller/create-staff)
+  (GET "/staffs/:id" [request id] staff-controller/view-staff)
 
   (route/resources "/")
   (route/not-found (page-not-found)))
