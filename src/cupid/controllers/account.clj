@@ -1,5 +1,5 @@
 (ns cupid.controllers.account
-  (:use [cupid.utils.resp])
+  (:use [ring.util.response])
   (:require [clojure.data.json :as json]
             [ring.util.response :refer [redirect]]
             [selmer.parser :refer [render-file]]

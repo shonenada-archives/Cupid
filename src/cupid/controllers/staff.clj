@@ -51,3 +51,29 @@
                          :status status}
                   created-staff (staff-model/create-staff staff)]
               (response {:success true}))))))))
+
+(defn view-staff [request id]
+  (if-let [staff (staff-model/get-by-id id)]
+    (response (render-file "staffs/view.html" {:staff staff}))
+    (response (not-found request))))
+
+(defn edit-staff [request id]
+  (if-let [staff (staff-model/get-by-id id)]
+    (let [params (:params request)
+          mobile (:mobile params)
+          email (:email params)
+          job-name (:job_name params)
+          status (:status params)]
+      (if (or (empty? mobile)
+              (empty? email)
+              (empty? job-name)
+              (empty? status))
+        (response {:success false
+                   :message messages/empty-fields})
+        (let [staff-field {:mobile mobile
+                           :email email
+                           :job-name job-name
+                           :status status}]
+          (staff-model/update-staff id staff-field)
+          (response {:success true}))))
+    (response (not-found request))))

@@ -1,7 +1,30 @@
 {% extends 'base.html' %}
+{% block title %}Staffs{% endblock %}
 {% block content %}
-{% for each in staffs %}
-{{ each.id }}
-{{ each.fullname }}
-{% endfor %}
+<table class="align-center">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>NO</th>
+      <th>Fullname</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>JobName</th>
+      <th>Operation</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for each in staffs %}
+    <tr>
+      <td>{{ each.id }}</td>
+      <td>{{ each.staff_no }}</td>
+      <td>{{ each.fullname }}</td>
+      <td>{{ each.mobile }}</td>
+      <td>{{ each.email }}</td>
+      <td>{{ each.job_name }}</td>
+      <td><a href="/staffs/{{ each.id }}">Edit</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

@@ -27,3 +27,8 @@
 (defn create-staff [staff]
   (let [{id :generated_key} (insert staffs (values staff))]
     (get-by-id id)))
+
+(defn update-staff [sid staff-field]
+  (update staffs
+    (set-fields staff-field)
+    (where {:id sid})))
