@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Staffs - {{ staff.fullname }}{% endblock %}
+
+{% block headhtml %}
+<link rel="stylesheet" type="text/css" href="/static/styles/staffs.css" />
+{% endblock %}
+
+{% block content %}
+<div class="staff-update">
+  <form method="POST">
+    <section>
+      <label>Staff No</label>
+      <span>{{ staff.staff_no }}</span>
+    </section>
+
+    <section>
+      <label>Fullname</label>
+      <span>{{ staff.fullname }}</span>
+    </section>
+
+    <section>
+      <label>Job Name</label>
+      <span>{{ staff.job_name }}</span>
+    </section>
+
+    <section>
+      <label>Gender</label>
+      <span>{{ staff.gender }}</span>
+    </section>
+
+    <section>
+      <label>Email</label>
+      <span>{{ staff.email }}</span>
+    </section>
+
+    <section>
+      <label>Mobile</label>
+      <span>{{ staff.mobile }}</span>
+    </section>
+
+    <section>
+      <label>ID Card</label>
+      <span>{{ staff.id_card }}</span>
+    </section>
+
+    <section>
+      <label>Employed Time</label>
+      <span>{{ staff.employed_time }}</span>
+    </section>
+
+    <section>
+      <label>Resume</label>
+      <span><a href="{{ staff.resume-url }}">Resume</a></span>
+    </section>
+
+    <section>
+      <label>Status</label>
+      <span>{{ staff.status }}</span>
+    </section>
+
+  </form>
+</div>
+{% endblock %}

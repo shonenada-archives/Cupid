@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+table {
+  width: 100%;
+}
+
 .hide {
   display: none;
 }
@@ -32,12 +36,20 @@ a {
   text-align: right;
 }
 
+.align-center {
+  text-align: center;
+}
+
 .pull-left {
   float: left;
 }
 
 .pull-right {
   float: right;
+}
+
+.half-width {
+  width: 50%;
 }
 
 .header {
